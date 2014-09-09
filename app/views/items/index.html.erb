@@ -5,12 +5,10 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>URL</th>
   </tr>
   <% @items.each do |item| %>
     <tr>
-      <td><%= item.name %></td>
-      <td><%= item.url %></td>
+      <td><%= link_to item.name, item.url %></td>
       <td><%= link_to :edit, edit_item_path(item) %></td>
       <td><%= link_to :delete, item_path(item), method: :delete,
                                data: { confirm: "Delete #{item[:name]}?" } %></td>

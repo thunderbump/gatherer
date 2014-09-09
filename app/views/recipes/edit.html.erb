@@ -1,0 +1,13 @@
+<h1>Edit recipe <%= @recipe.id %></h1>
+
+<%= form_for(@recipe) do |f| %>
+  <div class="field">
+    <%= f.label :placeholder %>:<br>
+  </div>
+  <br>
+  <div class="form_sumbit">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br><br>
+<%= link_to "Back", recipes_path %>
