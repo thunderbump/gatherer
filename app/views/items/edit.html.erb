@@ -1,0 +1,19 @@
+<h1>Edit item <%= @item.name %></h1>
+
+<%= form_for(@item) do |f| %>
+  <div class="field">
+    <%= f.label :name %>:<br>
+    <%= f.text_field :name %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :url %>:<br>
+    <%= f.text_field :url %>
+  </div>
+  <br>
+  <div class="form_sumbit">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br><br>
+<%= link_to "Back", items_path %>
