@@ -2,7 +2,8 @@
 
 <%= form_for(@recipe) do |f| %>
   <div class="field">
-    <%= f.label :placeholder %>:<br>
+    <%= f.label :Result %>:<br>
+    <%= f.collection_select :result_id, @items, :id, :name %>
   </div>
   <br>
   <div class="form_sumbit">

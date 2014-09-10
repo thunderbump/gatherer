@@ -7,12 +7,14 @@
     <th>Name</th>
     <th>Created at</th>
     <th>Updated at</th>
+    <th>Result</th>
   </tr>
   <% @recipes.each do |recipe| %>
     <tr>
       <td><%= recipe.id %></td>
       <td><%= recipe.created_at %></td>
       <td><%= recipe.updated_at %></td>
+      <td><%= recipe.result ? recipe.result.name : "No result" %></td>
       <td><%= link_to :edit, edit_recipe_path(recipe) %></td>
       <td><%= link_to :delete, recipe_path(recipe), method: :delete,
                                data: { confirm: "Delete #{recipe[:name]}?" } %></td>

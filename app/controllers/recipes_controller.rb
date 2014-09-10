@@ -5,23 +5,25 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @items = Item.all
     @recipe = Recipe.new
   end
 
   def create
-    @recipe = Recipe.new()
+    @recipe = Recipe.new(recipe_params)
     @recipe.save
     redirect_to recipes_path
   end
 
   def edit
+    @items = Item.all
     @recipe = Recipe.find(params[:id])
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.touch
-#   if @recipe.update(recipe_params)
+#    if @recipe.touch
+    if @recipe.update(recipe_params)
       redirect_to recipes_path
     else
       render edit
@@ -36,7 +38,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit()
+    params.require(:recipe).permit(:result_id)
   end
 
 end
