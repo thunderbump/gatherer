@@ -6,6 +6,15 @@
     <%= f.collection_select :result_id, @items, :id, :name %>
   </div>
   <br>
+  <div class="items">
+    <%= f.fields_for :quantities do |ff| %>
+      <div class="item_fields">
+        <%= ff.fields_for :item do |fff|%>
+          <%= fff.text_field :amount %>
+          <%= fff.collection_select :item_id, @items, :id, :name %><br>
+        <% end %>
+      </div>
+    <% end %>
   <div class="form_sumbit">
     <%= f.submit %>
   </div>

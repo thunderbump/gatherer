@@ -18,9 +18,11 @@ class RecipesController < ApplicationController
   def edit
     @items = Item.all
     @recipe = Recipe.find(params[:id])
+#    @ingredients ? @ingredients << Item.new : @ingredients = [Item.new]
   end
 
   def update
+    byebug
     @recipe = Recipe.find(params[:id])
 #    if @recipe.touch
     if @recipe.update(recipe_params)
@@ -38,7 +40,14 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:result_id)
+    params.require(:recipe).permit(
+      :result_id,
+      :quantities => [
+        :id,
+        :item => [
+          :amount,
+          :item_id,
+        ]])
   end
 
 end
