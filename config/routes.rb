@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :items
   resources :recipes
+  resources :quantities
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

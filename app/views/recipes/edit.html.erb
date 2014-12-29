@@ -9,9 +9,15 @@
   <div class="items">
     <%= f.fields_for :quantities do |ff| %>
       <div class="item_fields">
-        <%= ff.fields_for :item do |fff|%>
-          <%= fff.text_field :amount %>
-          <%= fff.collection_select :item_id, @items, :id, :name %><br>
+        <%= ff.hidden_field :id %>
+        <%= ff.text_field :amount %>
+        <% unless ff.object.item_id %>
+          <%= ff.collection_select :item_id, @items, :id, :name, prompt: true%>
+          <%= link_to "Add", edit_recipe_path(extrablank: @extrablank + 1) %><br>
+        <% else %>
+          <%= (@items.detect{|i| i.id == ff.object.item_id}).name %>
+          <%= link_to "Delete", quantity_path(id: ff.object.id), method: :delete %>
+          <%= ff.hidden_field :item_id %>
         <% end %>
       </div>
     <% end %>
