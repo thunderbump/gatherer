@@ -13,7 +13,7 @@
         <%= ff.text_field :amount %>
         <% unless ff.object.item_id %>
           <%= ff.collection_select :item_id, @items, :id, :name, prompt: true%>
-          <%= link_to "Add", edit_recipe_path(extrablank: @extrablank + 1) %><br>
+          <%= f.submit "Add" %><br>
         <% else %>
           <%= (@items.detect{|i| i.id == ff.object.item_id}).name %>
           <%= link_to "Delete", quantity_path(id: ff.object.id), method: :delete %>
